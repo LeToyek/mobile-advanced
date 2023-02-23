@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_advanced/services/cubit/pokemon_cubit.dart';
 
 class HomePage extends StatelessWidget {
   final String title;
@@ -7,7 +8,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(dotenv.get("API_LINK"));
     return Scaffold(
       appBar: AppBar(
         actions: const [],
@@ -15,8 +15,18 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          children: const [
-            Text("asdasd"),
+          children: [
+            const Text("asdasd"),
+            BlocBuilder<PokemonCubit, PokemonState>(builder: (context, state) {
+              if (state is PokemonInitial) {
+                return const CircularProgressIndicator();
+              } else if (state is PokemonData) {
+                return const Text("ok");
+              } else if (state is PokemonError) {
+                return Text(state.message);
+              }
+              return Container();
+            })
           ],
         ),
       ),

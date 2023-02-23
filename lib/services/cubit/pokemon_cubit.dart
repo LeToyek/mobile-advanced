@@ -1,8 +1,22 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:mobile_advanced/model/pokemon.dart';
+import 'package:mobile_advanced/services/api/poke_api.dart';
 
 part 'pokemon_state.dart';
 
 class PokemonCubit extends Cubit<PokemonState> {
-  PokemonCubit() : super(PokemonInitial());
+  final PokemonService service;
+  PokemonCubit(
+    this.service,
+  ) : super(PokemonInitial());
+
+  Future<void> getPokemons() async {
+    var pokemons = await service.getPokemon();
+    if (pokemons.isNotEmpty) {
+      emit(PokemonData(pokes: pokemons));
+    } else {
+      emit(PokemonError(message: "Error getting pokemon"));
+    }
+  }
 }
