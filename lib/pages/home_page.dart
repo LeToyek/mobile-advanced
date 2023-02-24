@@ -21,7 +21,13 @@ class HomePage extends StatelessWidget {
               if (state is PokemonInitial) {
                 return const CircularProgressIndicator();
               } else if (state is PokemonData) {
-                return const Text("ok");
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: state.pokes.length,
+                  itemBuilder: (context, index) {
+                    return Text(state.pokes[index].name);
+                  },
+                );
               } else if (state is PokemonError) {
                 return Text(state.message);
               }
