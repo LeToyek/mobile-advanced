@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:mobile_advanced/config/injectable.dart';
 import 'package:mobile_advanced/pages/home_page.dart';
-import 'package:mobile_advanced/services/api/poke_api.dart';
 import 'package:mobile_advanced/services/cubit/pokemon_cubit.dart';
 
 void main() async {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocProvider(
-          create: (context) => PokemonCubit(PokemonService())..getPokemons(),
+          create: (context) => locator<PokemonCubit>(),
           child: const HomePage(title: 'Flutter Demo Home Page')),
     );
   }
