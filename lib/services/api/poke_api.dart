@@ -23,8 +23,20 @@ class PokemonService {
         return pokemons;
       }
       return [];
-    } on DioError catch(e){
-      
+    } on DioError catch (e) {
+      if (e.type == DioErrorType.unknown) {
+        throw const FormatException(
+          "Endpoint not found",
+        );
+      } else if (e.type == DioErrorType.connectionError) {
+        throw const FormatException(
+          "You have no internet connection",
+        );
+      } else {
+        throw FormatException(
+          e.message.toString(),
+        );
+      }
     }
     return [];
   }

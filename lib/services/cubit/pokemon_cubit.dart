@@ -15,10 +15,10 @@ class PokemonCubit extends Cubit<PokemonState> {
 
   Future<void> getPokemons() async {
     var pokemons = await service.getPokemon();
-    if (pokemons.isNotEmpty) {
+    try {
       emit(PokemonData(pokes: pokemons));
-    } else {
-      emit(PokemonError(message: "Error getting pokemon"));
+    } on FormatException catch (e) {
+      PokemonError(message: e.message);
     }
   }
 }
