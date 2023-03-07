@@ -1,15 +1,12 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mobile_advanced/config/injectable.dart';
-import 'package:mobile_advanced/pages/home_page.dart';
-import 'package:mobile_advanced/services/cubit/pokemon_cubit.dart';
+import 'package:mobile_advanced/routes/app_route.dart';
 
 void main() async {
   await dotenv.load(fileName: "../lib/.env");
   configureDependencies();
-  runApp(DevicePreview(builder: (context) => const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,23 +15,12 @@ class MyApp extends StatelessWidget {
   // This widget is the roxot of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: BlocProvider(
-          create: (context) => locator<PokemonCubit>(),
-          child: const HomePage(title: 'Flutter Demo Home Page')),
+      routerConfig: AppRouter,
     );
   }
 }
