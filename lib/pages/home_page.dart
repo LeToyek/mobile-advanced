@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              BlocBuilder<PokemonCubit, PokemonState>(
+              BlocBuilder(
                 bloc: locator<PokemonCubit>()..getPokemons(),
                 builder: (context, state) {
                   if (state is PokemonInitial) {
