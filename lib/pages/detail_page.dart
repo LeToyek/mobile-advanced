@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:mobile_advanced/pages/layout/base_layout.dart';
 
 class DetailPage extends StatelessWidget {
@@ -11,6 +10,10 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseLayout(title: title, contentWidget: Container());
+    return BaseLayout(
+        title: title,
+        contentWidget: Container(
+          child: Text(title),
+        ));
   }
 }
