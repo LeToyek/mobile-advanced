@@ -24,7 +24,7 @@ class AppRouter {
           builder: (context, state) => const HomePage(title: "home"),
         ),
         GoRoute(
-          path: "/:/id",
+          path: "/:id",
           name: "Detail",
           builder: (context, state) => DetailPage(title: state.params["id"]!),
         )
