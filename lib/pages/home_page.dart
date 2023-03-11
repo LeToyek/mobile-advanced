@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                         }
                         return InkWell(
                           onTap: () => context.goNamed("Detail",
-                              params: {"id": pokemons[index].name}),
+                              params: {"id": pokemons[index].name},),
                           child: Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 4, vertical: 8),

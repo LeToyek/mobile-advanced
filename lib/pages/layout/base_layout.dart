@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BaseLayout extends StatelessWidget {
   final String title;
@@ -15,8 +16,7 @@ class BaseLayout extends StatelessWidget {
       appBar: AppBar(
         actions: const [],
         leading: IconButton(
-            onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(Icons.arrow_back)),
+            onPressed: () => context.pop(), icon: const Icon(Icons.arrow_back)),
         title: Text(title),
       ),
       body: contentWidget,
