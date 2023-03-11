@@ -10,4 +10,4 @@ final locator = GetIt.instance;
   preferRelativeImports: true, // default
   asExtension: false, // default
 )
-void configureDependencies(String environment) => init(locator);
+void configureDependencies() => init(locator);

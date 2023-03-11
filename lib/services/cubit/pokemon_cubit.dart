@@ -21,4 +21,13 @@ class PokemonCubit extends Cubit<PokemonState> {
       PokemonError(message: e.message);
     }
   }
+
+  Future<void> getOnePokemon(String name) async {
+    var pokemon = await service.getOnePokemon(name);
+    try {
+      emit(PokemonOneData(poke: pokemon));
+    } on FormatException catch (e) {
+      PokemonError(message: e.message);
+    }
+  }
 }

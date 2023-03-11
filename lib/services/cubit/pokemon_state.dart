@@ -12,6 +12,12 @@ class PokemonData extends PokemonState {
   });
 }
 
+class PokemonOneData extends PokemonState {
+  final Pokemon poke;
+
+  PokemonOneData({required this.poke});
+}
+
 class PokemonError extends PokemonState {
   final String message;
   PokemonError({

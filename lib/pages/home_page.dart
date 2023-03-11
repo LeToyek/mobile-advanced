@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 import 'package:mobile_advanced/config/injectable.dart';
-import 'package:mobile_advanced/pages/animation_page.dart';
+import 'package:mobile_advanced/pages/layout/base_layout.dart';
 import 'package:mobile_advanced/services/cubit/pokemon_cubit.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,35 +14,31 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          actions: const [],
-          leading: IconButton(
-              onPressed: () => context.go(AnimationPage.route),
-              icon: const Icon(Icons.arrow_back)),
-          title: Text(title),
-        ),
-        body: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                BlocBuilder(
-                  bloc: locator<PokemonCubit>()..getPokemons(),
-                  builder: (context, state) {
-                    if (state is PokemonInitial) {
-                      return const CircularProgressIndicator();
-                    } else if (state is PokemonData) {
-                      return ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: state.pokes.length,
-                        itemBuilder: (context, index) {
-                          var pokemons = state.pokes;
-                          if (pokemons.isEmpty) {
-                            return const Text("Empty Pokemon");
-                          }
-                          return Container(
+        child: BaseLayout(
+      title: title,
+      contentWidget: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              BlocBuilder(
+                bloc: locator<PokemonCubit>()..getPokemons(),
+                builder: (context, state) {
+                  if (state is PokemonInitial) {
+                    return const CircularProgressIndicator();
+                  } else if (state is PokemonData) {
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: state.pokes.length,
+                      itemBuilder: (context, index) {
+                        var pokemons = state.pokes;
+                        if (pokemons.isEmpty) {
+                          return const Text("Empty Pokemon");
+                        }
+                        return InkWell(
+                          onTap: () {},
+                          child: Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 4, vertical: 8),
                             decoration: BoxDecoration(
@@ -54,20 +49,20 @@ class HomePage extends StatelessWidget {
                                 Text(pokemons[index].name),
                               ],
                             ),
-                          );
-                        },
-                      );
-                    } else if (state is PokemonError) {
-                      return Text(state.message);
-                    }
-                    return Container();
-                  },
-                )
-              ],
-            ),
+                          ),
+                        );
+                      },
+                    );
+                  } else if (state is PokemonError) {
+                    return Text(state.message);
+                  }
+                  return Container();
+                },
+              )
+            ],
           ),
         ),
       ),
-    );
+    ));
   }
 }

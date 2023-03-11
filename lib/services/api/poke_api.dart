@@ -20,7 +20,6 @@ class PokemonService implements IPokeRepository {
         var detailRes = await dio.get(data["url"]);
         pokemons.add(Pokemon.fromJson(detailRes.data));
       }
-      getOnePokemon("ditto");
       return pokemons;
     } on DioError catch (e) {
       if (e.type == DioErrorType.unknown) {
@@ -42,8 +41,7 @@ class PokemonService implements IPokeRepository {
   Future<Pokemon> getOnePokemon(String name) async {
     try {
       var res = await dio.get("/$name");
-      print(res);
-      return Pokemon(image: "image", name: name, stats: <Stat>[]);
+      return Pokemon.fromJson(res.data);
     } on DioError {
       throw const FormatException();
     }
