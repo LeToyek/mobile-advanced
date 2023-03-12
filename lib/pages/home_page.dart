@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_advanced/config/injectable.dart';
 import 'package:mobile_advanced/pages/layout/base_layout.dart';
+import 'package:mobile_advanced/pages/layout/card_layout.dart';
 import 'package:mobile_advanced/services/cubit/pokemon_cubit.dart';
 
 class HomePage extends StatelessWidget {
@@ -26,34 +27,34 @@ class HomePage extends StatelessWidget {
                 bloc: locator<PokemonCubit>()..getPokemons(),
                 builder: (context, state) {
                   if (state is PokemonInitial) {
-                    return const CircularProgressIndicator();
+                    return const Center(child: CircularProgressIndicator());
                   } else if (state is PokemonData) {
-                    return ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: state.pokes.length,
-                      itemBuilder: (context, index) {
-                        var pokemons = state.pokes;
-                        if (pokemons.isEmpty) {
-                          return const Text("Empty Pokemon");
-                        }
-                        return InkWell(
-                          onTap: () => context.goNamed("Detail",
-                              params: {"id": pokemons[index].name},),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 4, vertical: 8),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(32)),
-                            child: Row(
-                              children: [
-                                Image.network(pokemons[index].image),
-                                Text(pokemons[index].name),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                    return Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 8,
+                                mainAxisSpacing: 12),
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: state.pokes.length,
+                        itemBuilder: (context, index) {
+                          var pokemons = state.pokes;
+                          if (pokemons.isEmpty) {
+                            return const Text("Empty Pokemon");
+                          }
+                          return InkWell(
+                              onTap: () => context.goNamed(
+                                    "Detail",
+                                    params: {"id": pokemons[index].name},
+                                  ),
+                              child: CardLayout(
+                                  imageURL: pokemons[index].image,
+                                  name: pokemons[index].name));
+                        },
+                      ),
                     );
                   } else if (state is PokemonError) {
                     return Text(state.message);
