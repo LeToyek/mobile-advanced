@@ -19,22 +19,25 @@ class _SplashPageState extends State<SplashPage> {
           onTap: () {
             context.go(HomePage.route);
           },
-          child: Image.network(
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/769px-Pokebola-pokeball-png-0.png",
-            width: 100,
-          )
-              .animate(
-                onPlay: (controller) => controller.repeat(),
-              )
-              .shimmer()
-              .slideY(
-                  begin: 0,
-                  end: -0.5,
-                  duration: const Duration(milliseconds: 500))
-              .then()
-              .shake(duration: const Duration(milliseconds: 1000))
-              .then()
-              .slideY(end: 0.5, duration: const Duration(milliseconds: 500)),
+          child: Hero(
+            tag: "PokeTag",
+            child: Image.network(
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/769px-Pokebola-pokeball-png-0.png",
+              width: 100,
+            )
+                .animate(
+                  onPlay: (controller) => controller.repeat(),
+                )
+                .shimmer()
+                .slideY(
+                    begin: 0,
+                    end: -0.5,
+                    duration: const Duration(milliseconds: 500))
+                .then()
+                .shake(duration: const Duration(milliseconds: 1000))
+                .then()
+                .slideY(end: 0.5, duration: const Duration(milliseconds: 500)),
+          ),
         ),
       ),
     );

@@ -4,7 +4,7 @@ import 'package:mobile_advanced/config/injectable.dart';
 import 'package:mobile_advanced/routes/app_route.dart';
 
 void main() async {
-  await dotenv.load(fileName: "../lib/.env");
+  await dotenv.load(fileName: "../../.env");
   configureDependencies();
   runApp(const MyApp());
 }
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.blueGrey,
       ),
       routerConfig: locator<AppRouter>().router,
     );

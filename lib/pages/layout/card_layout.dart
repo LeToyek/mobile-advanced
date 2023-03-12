@@ -55,6 +55,9 @@ class _CardLayoutState extends State<CardLayout> {
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
+            const SizedBox(
+              height: 16,
+            ),
             Stack(
               children: [
                 Positioned(
@@ -70,12 +73,17 @@ class _CardLayoutState extends State<CardLayout> {
                         color: Color.fromRGBO(255, 255, 255, 0.393)),
                   ),
                 ),
-                Image.network(
-                  widget.imageURL,
-                  height: 100,
-                  fit: BoxFit.cover,
+                Positioned(
+                  child: Image.network(
+                    widget.imageURL,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 16,
             ),
           ],
         ),
