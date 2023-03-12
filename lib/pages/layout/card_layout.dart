@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
 import 'package:palette_generator/palette_generator.dart';
 
@@ -15,7 +17,7 @@ class CardLayout extends StatefulWidget {
 }
 
 class _CardLayoutState extends State<CardLayout> {
-  late PaletteColor? _color;
+  PaletteColor? _color;
 
   @override
   void initState() {
@@ -53,31 +55,28 @@ class _CardLayoutState extends State<CardLayout> {
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
-            ClipRRect(
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(16)),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      bottom: 0,
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color.fromRGBO(255, 255, 255, 0.393)),
-                      ),
-                    ),
-                    Image.network(
-                      widget.imageURL,
-                      height: 170,
-                      fit: BoxFit.cover,
-                    ),
-                  ],
-                )),
+            Stack(
+              children: [
+                Positioned(
+                  bottom: 0,
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Color.fromRGBO(255, 255, 255, 0.393)),
+                  ),
+                ),
+                Image.network(
+                  widget.imageURL,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              ],
+            ),
           ],
         ),
       ),
