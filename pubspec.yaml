@@ -46,6 +46,7 @@ dependencies:
   flutter_animate: ^4.1.0
   flutter_svg: ^1.1.6
   rive: ^0.10.2
+  palette_generator: ^0.3.3+2
   
 
 dev_dependencies:
