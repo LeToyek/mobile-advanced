@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
       body: Center(
         child: GestureDetector(
           onTap: () {
-            context.go(HomePage.route);
+            context.push(HomePage.route);
           },
           child: Hero(
             tag: "PokeTag",

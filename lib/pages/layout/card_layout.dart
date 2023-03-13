@@ -45,6 +45,7 @@ class _CardLayoutState extends State<CardLayout> {
         borderRadius: BorderRadius.circular(12),
       ),
       child: FittedBox(
+        fit: BoxFit.none,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -60,17 +61,15 @@ class _CardLayoutState extends State<CardLayout> {
             ),
             Stack(
               children: [
-                Positioned(
-                  bottom: 0,
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    width: 40,
-                    height: 40,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Color.fromRGBO(255, 255, 255, 0.393)),
+                Positioned.fill(
+                  child: Center(
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Color.fromRGBO(255, 255, 255, 0.393)),
+                    ),
                   ),
                 ),
                 Positioned(
