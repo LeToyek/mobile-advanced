@@ -3,7 +3,8 @@ import 'package:injectable/injectable.dart';
 import 'package:mobile_advanced/model/pokemon.dart';
 import 'package:mobile_advanced/repository/i_poke_repository.dart';
 
-@lazySingleton
+@Environment("prod")
+@LazySingleton(as: IPokeRepository)
 class PokemonService implements IPokeRepository {
   final Dio dio;
   PokemonService({
@@ -38,12 +39,4 @@ class PokemonService implements IPokeRepository {
     }
   }
 
-  Future<Pokemon> getOnePokemon(String name) async {
-    try {
-      var res = await dio.get("/$name");
-      return Pokemon.fromJson(res.data);
-    } on DioError {
-      throw const FormatException();
-    }
-  }
 }

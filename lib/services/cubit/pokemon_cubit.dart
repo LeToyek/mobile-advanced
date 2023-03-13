@@ -2,13 +2,13 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:mobile_advanced/model/pokemon.dart';
-import 'package:mobile_advanced/services/api/poke_api.dart';
+import 'package:mobile_advanced/repository/i_poke_repository.dart';
 
 part 'pokemon_state.dart';
 
 @injectable
 class PokemonCubit extends Cubit<PokemonState> {
-  final PokemonService service;
+  final IPokeRepository service;
   PokemonCubit(
     this.service,
   ) : super(PokemonInitial());
@@ -17,15 +17,6 @@ class PokemonCubit extends Cubit<PokemonState> {
     var pokemons = await service.getPokemon();
     try {
       emit(PokemonData(pokes: pokemons));
-    } on FormatException catch (e) {
-      PokemonError(message: e.message);
-    }
-  }
-
-  Future<void> getOnePokemon(String name) async {
-    var pokemon = await service.getOnePokemon(name);
-    try {
-      emit(PokemonOneData(poke: pokemon));
     } on FormatException catch (e) {
       PokemonError(message: e.message);
     }

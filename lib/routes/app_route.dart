@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
+import 'package:mobile_advanced/model/pokemon.dart';
 import 'package:mobile_advanced/pages/animation_page.dart';
 import 'package:mobile_advanced/pages/detail_page.dart';
 import 'package:mobile_advanced/pages/home_page.dart';
@@ -23,10 +24,12 @@ class AppRouter {
       builder: (context, state) => const HomePage(title: "home"),
     ),
     GoRoute(
-      path: "/:id",
-      name: "Detail",
-      builder: (context, state) => DetailPage(title: state.params["id"]!),
-    ),
+        path: "/:id",
+        name: "Detail",
+        builder: (context, state) {
+          Pokemon pokemon = state.extra as Pokemon;
+          return DetailPage(title: state.params["id"]!, poke: pokemon);
+        }),
     GoRoute(
       path: "/",
       name: "splash",

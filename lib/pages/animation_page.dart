@@ -25,7 +25,7 @@ class _AnimationPageState extends State<AnimationPage> {
         children: [
           SvgPicture.asset(rocketSVG),
           ElevatedButton(
-              onPressed: () => context.go(HomePage.route),
+              onPressed: () => context.push(HomePage.route),
               child: const Text("Go to Homepage"))
         ],
       )),

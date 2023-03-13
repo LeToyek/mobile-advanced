@@ -4,8 +4,8 @@ import 'package:mobile_advanced/config/injectable.dart';
 import 'package:mobile_advanced/routes/app_route.dart';
 
 void main() async {
-  await dotenv.load(fileName: "../../.env");
-  configureDependencies();
+  await dotenv.load(fileName: ".env");
+  configureDependencies("dev");
   runApp(const MyApp());
 }
 
