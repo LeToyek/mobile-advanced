@@ -41,7 +41,7 @@ class _CardLayoutState extends State<CardLayout> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
       decoration: BoxDecoration(
-        color: _color?.color ?? const Color.fromARGB(255, 89, 202, 255),
+        color: _color?.color ?? const Color.fromARGB(255, 65, 152, 193),
         borderRadius: BorderRadius.circular(12),
       ),
       child: FittedBox(
@@ -73,10 +73,13 @@ class _CardLayoutState extends State<CardLayout> {
                   ),
                 ),
                 Positioned(
-                  child: Image.network(
-                    widget.imageURL,
-                    height: 100,
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: "hero${widget.name}",
+                    child: Image.network(
+                      widget.imageURL,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ],
