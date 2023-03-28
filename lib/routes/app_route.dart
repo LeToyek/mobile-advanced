@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile_advanced/model/pokemon.dart';
 import 'package:mobile_advanced/pages/animation_page.dart';
+import 'package:mobile_advanced/pages/auth/auth_page.dart';
 import 'package:mobile_advanced/pages/detail_page.dart';
 import 'package:mobile_advanced/pages/home_page.dart';
 import 'package:mobile_advanced/pages/splash_page.dart';
@@ -34,6 +35,11 @@ class AppRouter {
       path: "/",
       name: "splash",
       builder: (context, state) => const SplashPage(),
+    ),
+    GoRoute(
+      path: AuthPage.route,
+      name: AuthPage.name,
+      builder: (context, state) => const AuthPage(),
     ),
   ]);
 }

@@ -66,7 +66,9 @@ class BaseLayout extends StatelessWidget {
               color: Colors.white,
               icon: const Icon(Icons.home_filled)),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push("/testt");
+              },
               color: Colors.white,
               icon: const Icon(Icons.settings)),
         ],

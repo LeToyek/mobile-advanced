@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mobile_advanced/config/injectable.dart';
 import 'package:mobile_advanced/routes/app_route.dart';
-import 'package:mobile_advanced/services/cubit/pokemon_cubit.dart';
+import 'package:mobile_advanced/services/pokemon/cubit/pokemon_cubit.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
