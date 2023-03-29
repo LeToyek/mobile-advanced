@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_advanced/constants/color.dart';
+import 'package:mobile_advanced/pages/auth/auth_page.dart';
 import 'package:mobile_advanced/pages/home_page.dart';
 
 class BaseLayout extends StatelessWidget {
@@ -66,7 +67,9 @@ class BaseLayout extends StatelessWidget {
               color: Colors.white,
               icon: const Icon(Icons.home_filled)),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(AuthPage.route);
+              },
               color: Colors.white,
               icon: const Icon(Icons.settings)),
         ],

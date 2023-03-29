@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile_advanced/model/pokemon.dart';
 import 'package:mobile_advanced/pages/animation_page.dart';
+import 'package:mobile_advanced/pages/auth/auth_page.dart';
 import 'package:mobile_advanced/pages/detail_page.dart';
 import 'package:mobile_advanced/pages/home_page.dart';
 import 'package:mobile_advanced/pages/splash_page.dart';
@@ -24,16 +25,21 @@ class AppRouter {
       builder: (context, state) => const HomePage(title: "home"),
     ),
     GoRoute(
+      path: "/",
+      name: "splash",
+      builder: (context, state) => const SplashPage(),
+    ),
+    GoRoute(
+      path: AuthPage.route,
+      name: AuthPage.name,
+      builder: (context, state) => const AuthPage(),
+    ),
+    GoRoute(
         path: "/:id",
         name: "Detail",
         builder: (context, state) {
           Pokemon pokemon = state.extra as Pokemon;
           return DetailPage(title: state.params["id"]!, poke: pokemon);
         }),
-    GoRoute(
-      path: "/",
-      name: "splash",
-      builder: (context, state) => const SplashPage(),
-    ),
   ]);
 }

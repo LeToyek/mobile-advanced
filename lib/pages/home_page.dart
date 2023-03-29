@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_advanced/pages/layout/base_layout.dart';
 import 'package:mobile_advanced/pages/layout/card_layout.dart';
-import 'package:mobile_advanced/services/cubit/pokemon_cubit.dart';
+import 'package:mobile_advanced/services/pokemon/cubit/pokemon_cubit.dart';
 
 class HomePage extends StatefulWidget {
   final String title;

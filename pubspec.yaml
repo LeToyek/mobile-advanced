@@ -49,6 +49,7 @@ dependencies:
   palette_generator: ^0.3.3+2
   hydrated_bloc: ^9.1.0
   expandable_page_view: ^1.0.17
+  local_auth: ^2.1.6
   
 
 dev_dependencies:

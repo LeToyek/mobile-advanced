@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:mobile_advanced/model/pokemon.dart';
 import 'package:mobile_advanced/repository/i_poke_repository.dart';
-import 'package:mobile_advanced/services/api/poke_api.dart';
 
 @Environment("dev")
 @LazySingleton(as: IPokeRepository)

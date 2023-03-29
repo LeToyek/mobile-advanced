@@ -10,11 +10,12 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:mobile_advanced/repository/i_poke_repository.dart' as _i5;
 import 'package:mobile_advanced/routes/app_route.dart' as _i3;
-import 'package:mobile_advanced/services/api/dev_poke_api.dart' as _i6;
-import 'package:mobile_advanced/services/api/poke_api.dart' as _i7;
-import 'package:mobile_advanced/services/cubit/pokemon_cubit.dart' as _i8;
+import 'package:mobile_advanced/services/pokemon/api/dev_poke_api.dart' as _i6;
+import 'package:mobile_advanced/services/pokemon/api/poke_api.dart' as _i7;
+import 'package:mobile_advanced/services/pokemon/cubit/pokemon_cubit.dart'
+    as _i8;
 
-import '../services/api/config_dio.dart' as _i9;
+import '../services/provider/config_dio.dart' as _i9;
 
 const String _dev = 'dev';
 const String _prod = 'prod';
