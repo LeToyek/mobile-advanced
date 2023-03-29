@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mobile_advanced/pages/home_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -16,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
       body: Center(
         child: GestureDetector(
           onTap: () {
-            context.push("/testt");
+            context.push(HomePage.route);
           },
           child: Hero(
             tag: "PokeTag",

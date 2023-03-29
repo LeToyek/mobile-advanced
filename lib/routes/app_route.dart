@@ -25,13 +25,6 @@ class AppRouter {
       builder: (context, state) => const HomePage(title: "home"),
     ),
     GoRoute(
-        path: "/:id",
-        name: "Detail",
-        builder: (context, state) {
-          Pokemon pokemon = state.extra as Pokemon;
-          return DetailPage(title: state.params["id"]!, poke: pokemon);
-        }),
-    GoRoute(
       path: "/",
       name: "splash",
       builder: (context, state) => const SplashPage(),
@@ -41,5 +34,12 @@ class AppRouter {
       name: AuthPage.name,
       builder: (context, state) => const AuthPage(),
     ),
+    GoRoute(
+        path: "/:id",
+        name: "Detail",
+        builder: (context, state) {
+          Pokemon pokemon = state.extra as Pokemon;
+          return DetailPage(title: state.params["id"]!, poke: pokemon);
+        }),
   ]);
 }
